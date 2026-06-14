@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trésorerie Mai 2026 — Famille Bely</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    background: #f5f5f3;
+    color: #1a1a1a;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .header h1 { font-size: 20px; font-weight: 500; }
+  .header p { font-size: 13px; color: #666; margin-top: 2px; }
+  .badge {
+    font-size: 12px;
+    background: #eaf3de;
+    color: #3b6d11;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .kpi {
+    background: #efefed;
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .kpi.success { background: #eaf3de; }
+  .kpi label { font-size: 12px; color: #666; display: block; margin-bottom: 4px; }
+  .kpi.success label { color: #3b6d11; }
+  .kpi .value { font-size: 22px; font-weight: 500; }
+  .kpi.success .value { color: #27500a; }
+
+  .card {
+    background: #fff;
+    border: 0.5px solid rgba(0,0,0,0.12);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .card .subtitle {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 14px;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 11px;
+    color: #666;
+  }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+  .progress-wrap {
+    height: 20px;
+    background: #efefed;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .progress-bar {
+    height: 100%;
+    background: #378ADD;
+    border-radius: 8px;
+    transition: width 1s ease;
+  }
+  .progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #666;
+  }
+  .progress-labels .ok { color: #27500a; font-weight: 500; }
+
+  .insight {
+    background: #fff8e6;
+    border-left: 3px solid #EF9F27;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #633806;
+    margin-bottom: 16px;
+  }
+  .insight strong { font-weight: 500; }
+
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 0.5px solid #e0e0dc;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div>
+      <h1>Bilan Mai 2026</h1>
+      <p>Trésorerie 2026 — Famille Bely</p>
+    </div>
+    <span class="badge">Données réelles</span>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <label>Entrées</label>
+      <span class="value">5 221 €</span>
+    </div>
+    <div class="kpi">
+      <label>Charges fixes</label>
+      <span class="value">1 717 €</span>
+    </div>
+    <div class="kpi">
+      <label>Charges variables</label>
+      <span class="value">2 821 €</span>
+    </div>
+    <div class="kpi success">
+      <label>Résultat net</label>
+      <span class="value">+683 €</span>
+    </div>
+    <div class="kpi">
+      <label>Solde compte</label>
+      <span class="value">934 €</span>
+    </div>
+  </div>
+
+  <div class="insight">
+    <strong>Point d'attention :</strong> Les courses alimentaires ont atteint 834 € en mai, soit +599 € au-dessus de la moyenne jan–avr (235 €). À surveiller en juin.
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Évolution du solde</h2>
+      <p class="subtitle">Jan – Mai 2026 (réel)</p>
+      <div class="legend">
+        <span><span class="swatch" style="background:#378ADD;height:2px;width:14px;border-radius:0;"></span>Solde CEP</span>
+      </div>
+      <div style="position:relative; height:160px;">
+        <canvas id="chartSolde" role="img" aria-label="Évolution du solde jan-mai 2026">Jan: -29€, Fév: 1540€, Mar: 2525€, Avr: 729€, Mai: 934€</canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Répartition des charges</h2>
+      <p class="subtitle">Mai 2026 — total 4 538 €</p>
+      <div class="legend">
+        <span><span class="swatch" style="background:#378ADD;"></span>Fixes 38% / 1 717 €</span>
+        <span><span class="swatch" style="background:#D85A30;"></span>Variables 62% / 2 821 €</span>
+      </div>
+      <div style="position:relative; height:160px;">
+        <canvas id="chartDonut" role="img" aria-label="Répartition charges fixes vs variables">Fixes: 1717€ (38%), Variables: 2821€ (62%)</canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Charges variables — réel vs moyenne jan–avr</h2>
+    <p class="subtitle">Barres bleues = mai réel · Barres grises = moyenne des 4 premiers mois</p>
+    <div class="legend">
+      <span><span class="swatch" style="background:#378ADD;"></span>Réel mai</span>
+      <span><span class="swatch" style="background:#B4B2A9;"></span>Moy. jan–avr</span>
+    </div>
+    <div style="position:relative; height:260px;">
+      <canvas id="chartCV" role="img" aria-label="Charges variables mai vs moyenne jan-avr">Courses: 834 vs 235. Restaurants: 312 vs 453. Shopping: 632 vs 593. Santé: 190 vs 111. Loisirs: 432 vs 335. Voyages: 20 vs 175. Divers: 401 vs 725.</canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Budget charges variables — utilisation mensuelle</h2>
+    <p class="subtitle">Budget théorique = Entrées − Charges fixes = 3 504 €/mois</p>
+    <div class="progress-wrap">
+      <div class="progress-bar" style="width:80.5%;"></div>
+    </div>
+    <div class="progress-labels">
+      <span>2 821 € dépensés (80 %)</span>
+      <span class="ok">+683 € de résultat</span>
+      <span>Budget : 3 504 €</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Trajectoire solde projeté 2026</h2>
+    <p class="subtitle">Jan–Mai réel · Jun–Déc prévisionnel</p>
+    <div class="legend">
+      <span><span class="swatch" style="background:#378ADD;"></span>Réel</span>
+      <span><span class="swatch" style="background:#B4B2A9;border:1px dashed #888;"></span>Prévisionnel</span>
+    </div>
+    <div style="position:relative; height:180px;">
+      <canvas id="chartProj" role="img" aria-label="Trajectoire solde 2026">Jan: -29, Fév: 1540, Mar: 2525, Avr: 729, Mai: 934, Jun: -1012, Jul: -34, Aoû: 245, Sep: 1517, Oct: 2788, Nov: 4060, Déc: 5331</canvas>
+    </div>
+  </div>
+
+  <footer>Généré le 12 juin 2026 · Trésorerie Famille Bely · Données Caisse d'Épargne relevé n°119</footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const mois5 = ['Jan','Fév','Mar','Avr','Mai'];
+const soldes5 = [-29, 1540, 2525, 729, 934];
+
+new Chart(document.getElementById('chartSolde'), {
+  type: 'line',
+  data: {
+    labels: mois5,
+    datasets: [{
+      label: 'Solde', data: soldes5,
+      borderColor: '#378ADD', backgroundColor: 'rgba(55,138,221,0.08)',
+      tension: 0.3, pointRadius: 4, pointBackgroundColor: '#378ADD',
+      fill: true, borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ctx.parsed.y.toLocaleString('fr-FR') + ' €' }
+    }},
+    scales: {
+      y: { ticks: { callback: v => v.toLocaleString('fr-FR') + ' €', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.06)' } },
+      x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+    }
+  }
+});
+
+new Chart(document.getElementById('chartDonut'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Charges fixes', 'Charges variables'],
+    datasets: [{ data: [1717, 2821], backgroundColor: ['#378ADD','#D85A30'], borderWidth: 0, hoverOffset: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, cutout: '65%',
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ' : ' + ctx.parsed.toLocaleString('fr-FR') + ' €' } } }
+  }
+});
+
+new Chart(document.getElementById('chartCV'), {
+  type: 'bar',
+  data: {
+    labels: ['Courses','Restaurants','Shopping','Santé','Loisirs','Voyages','Divers'],
+    datasets: [
+      { label: 'Réel mai', data: [834,312,632,190,432,20,401], backgroundColor: '#378ADD', borderRadius: 3 },
+      { label: 'Moy. jan–avr', data: [235,453,593,111,335,175,725], backgroundColor: '#B4B2A9', borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ' : ' + ctx.parsed.y.toLocaleString('fr-FR') + ' €' } } },
+    scales: {
+      y: { ticks: { callback: v => v + ' €', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.06)' } },
+      x: { ticks: { font: { size: 11 }, autoSkip: false }, grid: { display: false } }
+    }
+  }
+});
+
+const mois12 = ['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+const soldesReel = [-29,1540,2525,729,934,null,null,null,null,null,null,null];
+const soldesPrevi = [null,null,null,null,934,-1012,-34,245,1517,2788,4060,5331];
+
+new Chart(document.getElementById('chartProj'), {
+  type: 'line',
+  data: {
+    labels: mois12,
+    datasets: [
+      {
+        label: 'Réel', data: soldesReel,
+        borderColor: '#378ADD', backgroundColor: 'rgba(55,138,221,0.08)',
+        tension: 0.3, pointRadius: 4, pointBackgroundColor: '#378ADD',
+        fill: true, borderWidth: 2, spanGaps: false
+      },
+      {
+        label: 'Prévisionnel', data: soldesPrevi,
+        borderColor: '#B4B2A9', borderDash: [5,4],
+        tension: 0.3, pointRadius: 3, pointBackgroundColor: '#B4B2A9',
+        fill: false, borderWidth: 2, spanGaps: false
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ' : ' + (ctx.parsed.y !== null ? ctx.parsed.y.toLocaleString('fr-FR') + ' €' : '—') } } },
+    scales: {
+      y: { ticks: { callback: v => v.toLocaleString('fr-FR') + ' €', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.06)' } },
+      x: { ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 0 }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>
