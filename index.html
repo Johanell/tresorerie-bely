@@ -3,37 +3,337 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="refresh" content="0; url=tresorerie_juin_2026.html">
-<title>Trésorerie Famille Bely</title>
+<title>Trésorerie Famille Bely — Dernier bilan</title>
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+font-size: 15px;
 background: #f5f5f3;
 color: #1a1a1a;
+padding: 24px 16px;
+min-height: 100vh;
+}
+.container { max-width: 760px; margin: 0 auto; }
+
+.header {
 display: flex;
 align-items: center;
-justify-content: center;
-min-height: 100vh;
-padding: 24px;
+justify-content: space-between;
+margin-bottom: 24px;
+flex-wrap: wrap;
+gap: 8px;
 }
-.box { text-align: center; max-width: 420px; }
-h1 { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
-p { font-size: 14px; color: #666; margin-bottom: 16px; }
-a { color: #378ADD; text-decoration: none; font-weight: 500; }
-ul { list-style: none; margin-top: 16px; font-size: 13px; }
-li { margin-bottom: 6px; }
-li a { color: #888; }
+.header h1 { font-size: 20px; font-weight: 500; }
+.header p { font-size: 13px; color: #666; margin-top: 2px; }
+.badge {
+font-size: 12px;
+background: #eaf3de;
+color: #3b6d11;
+padding: 4px 12px;
+border-radius: 8px;
+font-weight: 500;
+}
+
+.kpi-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+gap: 10px;
+margin-bottom: 20px;
+}
+.kpi {
+background: #efefed;
+border-radius: 8px;
+padding: 14px 16px;
+}
+.kpi.success { background: #eaf3de; }
+.kpi.warn { background: #fbe9e3; }
+.kpi label { font-size: 12px; color: #666; display: block; margin-bottom: 4px; }
+.kpi.success label { color: #3b6d11; }
+.kpi.warn label { color: #a13a1a; }
+.kpi .value { font-size: 22px; font-weight: 500; }
+.kpi.success .value { color: #27500a; }
+.kpi.warn .value { color: #a13a1a; }
+
+.card {
+background: #fff;
+border: 0.5px solid rgba(0,0,0,0.12);
+border-radius: 12px;
+padding: 16px 20px;
+margin-bottom: 16px;
+}
+.card h2 {
+font-size: 14px;
+font-weight: 500;
+margin-bottom: 4px;
+}
+.card .subtitle {
+font-size: 12px;
+color: #888;
+margin-bottom: 14px;
+}
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.legend {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin-bottom: 12px;
+font-size: 11px;
+color: #666;
+}
+.legend span { display: flex; align-items: center; gap: 4px; }
+.swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+
+.progress-wrap {
+height: 20px;
+background: #efefed;
+border-radius: 8px;
+overflow: hidden;
+margin-bottom: 8px;
+}
+.progress-bar {
+height: 100%;
+background: #D85A30;
+border-radius: 8px;
+transition: width 1s ease;
+}
+.progress-labels {
+display: flex;
+justify-content: space-between;
+font-size: 12px;
+color: #666;
+}
+.progress-labels .warn { color: #a13a1a; font-weight: 500; }
+
+.insight {
+background: #fff8e6;
+border-left: 3px solid #EF9F27;
+border-radius: 0 8px 8px 0;
+padding: 10px 14px;
+font-size: 13px;
+color: #633806;
+margin-bottom: 16px;
+}
+.insight strong { font-weight: 500; }
+
+.insight.info {
+background: #eaf2fb;
+border-left-color: #378ADD;
+color: #1c3f5e;
+}
+
+footer {
+text-align: center;
+font-size: 12px;
+color: #aaa;
+margin-top: 24px;
+padding-top: 16px;
+border-top: 0.5px solid #e0e0dc;
+}
+footer a { color: #888; }
 </style>
 </head>
 <body>
-<div class="box">
-<h1>Trésorerie Famille Bely</h1>
-<p>Redirection vers le dernier bilan mensuel…</p>
-<p><a href="tresorerie_juin_2026.html">Cliquez ici si la redirection ne fonctionne pas</a></p>
-<ul>
-<li><a href="tresorerie_juin_2026.html">Juin 2026 (dernier)</a></li>
-<li><a href="tresorerie_mai_2026.html">Mai 2026</a></li>
-</ul>
+<div class="container">
+
+<div class="header">
+<div>
+<h1>Bilan Juin 2026</h1>
+<p>Trésorerie 2026 — Famille Bely</p>
 </div>
+<span class="badge">Données réelles</span>
+</div>
+
+<div class="kpi-grid">
+<div class="kpi">
+<label>Entrées</label>
+<span class="value">5 467 €</span>
+</div>
+<div class="kpi">
+<label>Charges fixes</label>
+<span class="value">3 335 €</span>
+</div>
+<div class="kpi">
+<label>Charges variables</label>
+<span class="value">4 821 €</span>
+</div>
+<div class="kpi warn">
+<label>Résultat net</label>
+<span class="value">-2 689 €</span>
+</div>
+<div class="kpi success">
+<label>Solde compte</label>
+<span class="value">4 978 €</span>
+</div>
+</div>
+
+<div class="insight info">
+<strong>À lire avant de s'inquiéter :</strong> le résultat net du mois est très négatif (-2 689 €), mais le solde du compte est passé de 934 € à 4 978 €. L'écart s'explique par 7 490 € de virements internes reçus depuis Revolut, qui ne sont jamais comptés comme des revenus dans ce calcul (ce sont de l'épargne rapatriée, pas du gain).
+</div>
+
+<div class="insight">
+<strong>Point réel à surveiller :</strong> les charges "Divers/Imprévus" ont atteint 1 542 €, plus du double de la moyenne jan–mai (660 €) — tirées par plusieurs virements ponctuels à des tiers (~550 € au total) et un chèque de 92 €. La ligne "Voyages" (1 500 €) est une prévision reconduite faute de dépense identifiée sur ce relevé, à vérifier.
+</div>
+
+<div class="grid-2">
+<div class="card">
+<h2>Évolution du solde</h2>
+<p class="subtitle">Jan – Juin 2026 (réel)</p>
+<div class="legend">
+<span><span class="swatch" style="background:#378ADD;height:2px;width:14px;border-radius:0;"></span>Solde CEP</span>
+</div>
+<div style="position:relative; height:160px;">
+<canvas id="chartSolde" role="img" aria-label="Évolution du solde jan-juin 2026">Jan: -29€, Fév: 1540€, Mar: 2525€, Avr: 729€, Mai: 934€, Juin: 4978€</canvas>
+</div>
+</div>
+<div class="card">
+<h2>Répartition des charges</h2>
+<p class="subtitle">Juin 2026 — total 8 156 €</p>
+<div class="legend">
+<span><span class="swatch" style="background:#378ADD;"></span>Fixes 41% / 3 335 €</span>
+<span><span class="swatch" style="background:#D85A30;"></span>Variables 59% / 4 821 €</span>
+</div>
+<div style="position:relative; height:160px;">
+<canvas id="chartDonut" role="img" aria-label="Répartition charges fixes vs variables">Fixes: 3335€ (41%), Variables: 4821€ (59%)</canvas>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h2>Charges variables — réel vs moyenne jan–mai</h2>
+<p class="subtitle">Barres bleues = juin réel · Barres grises = moyenne des 5 premiers mois</p>
+<div class="legend">
+<span><span class="swatch" style="background:#378ADD;"></span>Réel juin</span>
+<span><span class="swatch" style="background:#B4B2A9;"></span>Moy. jan–mai</span>
+</div>
+<div style="position:relative; height:260px;">
+<canvas id="chartCV" role="img" aria-label="Charges variables juin vs moyenne jan-mai">Courses: 569 vs 355. Restaurants: 347 vs 424. Shopping: 546 vs 600. Santé: 66 vs 127. Loisirs: 251 vs 354. Voyages: 1500 vs 144. Divers: 1542 vs 660.</canvas>
+</div>
+</div>
+
+<div class="card">
+<h2>Budget charges variables — utilisation mensuelle</h2>
+<p class="subtitle">Budget théorique = Entrées − Charges fixes = 2 132 €/mois</p>
+<div class="progress-wrap">
+<div class="progress-bar" style="width:100%;"></div>
+</div>
+<div class="progress-labels">
+<span>4 821 € dépensés (226 % du budget)</span>
+<span class="warn">-2 689 € de dépassement</span>
+<span>Budget : 2 132 €</span>
+</div>
+</div>
+
+<div class="card">
+<h2>Trajectoire solde projeté 2026</h2>
+<p class="subtitle">Jan–Juin réel · Jul–Déc prévisionnel</p>
+<div class="legend">
+<span><span class="swatch" style="background:#378ADD;"></span>Réel</span>
+<span><span class="swatch" style="background:#B4B2A9;border:1px dashed #888;"></span>Prévisionnel</span>
+</div>
+<div style="position:relative; height:180px;">
+<canvas id="chartProj" role="img" aria-label="Trajectoire solde 2026">Jan: -29, Fév: 1540, Mar: 2525, Avr: 729, Mai: 934, Juin: 4978, Jul: -34, Aoû: 245, Sep: 1517, Oct: 2788, Nov: 4060, Déc: 5331</canvas>
+</div>
+</div>
+
+<footer>Généré le 6 juillet 2026 · Trésorerie Famille Bely · Données Caisse d'Épargne relevé n°120 · <a href="tresorerie_mai_2026.html">Voir mai 2026</a></footer>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const mois6 = ['Jan','Fév','Mar','Avr','Mai','Juin'];
+const soldes6 = [-29, 1540, 2525, 729, 934, 4978];
+
+new Chart(document.getElementById('chartSolde'), {
+type: 'line',
+data: {
+labels: mois6,
+datasets: [{
+label: 'Solde', data: soldes6,
+borderColor: '#378ADD', backgroundColor: 'rgba(55,138,221,0.08)',
+tension: 0.3, pointRadius: 4, pointBackgroundColor: '#378ADD',
+fill: true, borderWidth: 2
+}]
+},
+options: {
+responsive: true, maintainAspectRatio: false,
+plugins: { legend: { display: false }, tooltip: {
+callbacks: { label: ctx => ctx.parsed.y.toLocaleString('fr-FR') + ' €' }
+}},
+scales: {
+y: { ticks: { callback: v => v.toLocaleString('fr-FR') + ' €', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.06)' } },
+x: { ticks: { font: { size: 11 } }, grid: { display: false } }
+}
+}
+});
+
+new Chart(document.getElementById('chartDonut'), {
+type: 'doughnut',
+data: {
+labels: ['Charges fixes', 'Charges variables'],
+datasets: [{ data: [3335, 4821], backgroundColor: ['#378ADD','#D85A30'], borderWidth: 0, hoverOffset: 4 }]
+},
+options: {
+responsive: true, maintainAspectRatio: false, cutout: '65%',
+plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ' : ' + ctx.parsed.toLocaleString('fr-FR') + ' €' } } }
+}
+});
+
+new Chart(document.getElementById('chartCV'), {
+type: 'bar',
+data: {
+labels: ['Courses','Restaurants','Shopping','Santé','Loisirs','Voyages','Divers'],
+datasets: [
+{ label: 'Réel juin', data: [569,347,546,66,251,1500,1542], backgroundColor: '#378ADD', borderRadius: 3 },
+{ label: 'Moy. jan–mai', data: [355,424,600,127,354,144,660], backgroundColor: '#B4B2A9', borderRadius: 3 }
+]
+},
+options: {
+responsive: true, maintainAspectRatio: false,
+plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ' : ' + ctx.parsed.y.toLocaleString('fr-FR') + ' €' } } },
+scales: {
+y: { ticks: { callback: v => v + ' €', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.06)' } },
+x: { ticks: { font: { size: 11 }, autoSkip: false }, grid: { display: false } }
+}
+}
+});
+
+const mois12 = ['Jan','Fév','Mar','Avr','Mai','Juin','Jul','Aoû','Sep','Oct','Nov','Déc'];
+const soldesReel = [-29,1540,2525,729,934,4978,null,null,null,null,null,null];
+const soldesPrevi = [null,null,null,null,null,4978,-34,245,1517,2788,4060,5331];
+
+new Chart(document.getElementById('chartProj'), {
+type: 'line',
+data: {
+labels: mois12,
+datasets: [
+{
+label: 'Réel', data: soldesReel,
+borderColor: '#378ADD', backgroundColor: 'rgba(55,138,221,0.08)',
+tension: 0.3, pointRadius: 4, pointBackgroundColor: '#378ADD',
+fill: true, borderWidth: 2, spanGaps: false
+},
+{
+label: 'Prévisionnel', data: soldesPrevi,
+borderColor: '#B4B2A9', borderDash: [5,4],
+tension: 0.3, pointRadius: 3, pointBackgroundColor: '#B4B2A9',
+fill: false, borderWidth: 2, spanGaps: false
+}
+]
+},
+options: {
+responsive: true, maintainAspectRatio: false,
+plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + ' : ' + (ctx.parsed.y !== null ? ctx.parsed.y.toLocaleString('fr-FR') + ' €' : '—') } } },
+scales: {
+y: { ticks: { callback: v => v.toLocaleString('fr-FR') + ' €', font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.06)' } },
+x: { ticks: { font: { size: 11 }, autoSkip: false, maxRotation: 0 }, grid: { display: false } }
+}
+}
+});
+</script>
 </body>
 </html>
